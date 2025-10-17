@@ -13,8 +13,19 @@
     </style>
 </head>
 <body>
-    <h1>Sales Summary</h1>
+    <h1>Sales Summary 2925</h1>
     <div id="total-sales"></div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Sales</th>
+            </tr>
+        </thead>
+        <tbody id="sales-table-body">
+        </tbody>
+    </table>
 
     <script>
         async function fetchData() {
@@ -26,24 +37,29 @@
         function processData(csvData) {
             const lines = csvData.split('\n');
             let total = 0;
+            let tableRows = '';
+
             for (let i = 1; i < lines.length; i++) {  // Skip header row
                 const line = lines[i].trim();
                 if (line === '') continue; // Skip empty lines
                 const values = line.split(',');
                 if (values.length > 1) {
+                    const product = values[0];
                     const sales = parseFloat(values[1]);
                     if (!isNaN(sales)) {
                         total += sales;
+                        tableRows += `<tr><td>${product}</td><td>$${sales.toFixed(2)}</td></tr>`;
                     }
                 }
             }
-            return total.toFixed(2);
+            return { total: total.toFixed(2), tableRows: tableRows };
         }
 
         async function updateSalesTotal() {
             const csvData = await fetchData();
-            const totalSales = processData(csvData);
-            document.getElementById('total-sales').textContent = `Total Sales: $${totalSales}`;
+            const { total, tableRows } = processData(csvData);
+            document.getElementById('total-sales').textContent = `Total Sales: $${total}`;
+            document.getElementById('sales-table-body').innerHTML = tableRows;
         }
 
         updateSalesTotal();
