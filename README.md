@@ -1,43 +1,38 @@
-# Sales Summary App
+# Sales Summary Web App
 
-A simple single-page web application that reads sales data from a CSV file (`data.csv`) and displays the total sales amount.
+This web application displays a sales summary, including a table of products and their sales, and the total sales amount.
 
 ## Features
 
-*   Reads data from a `data.csv` file.
-*   Calculates the sum of the 'sales' column.
-*   Displays the total sales amount on the page.
-*   Uses Bootstrap 5 for basic styling.
+- Displays total sales from a CSV file.
+- Presents sales data in a Bootstrap table.
+- Includes product names and their corresponding sales figures.
 
 ## Usage
 
-1.  Ensure that the `index.html` and `data.csv` files are in the same directory.
+1.  Ensure you have a `data.csv` file in the same directory as `index.html`.  The CSV file should have the format `product_name,sales_amount` for each row.
 2.  Open `index.html` in a web browser.
-3.  The total sales amount will be displayed on the page.
 
 ## Data Format
 
-The `data.csv` file should be formatted as follows:
+The `data.csv` file should be structured as follows:
 
 ```csv
-product,sales
-Laptop,899.99
-Mouse,24.50
-Keyboard,65.00
-Monitor,199.99
+Product,Sales
+Product A,100.00
+Product B,200.00
+Product C,150.00
+Product D,250.00
 ```
 
-The first row should be the header row, with columns named 'product' and 'sales'. Subsequent rows should contain the product name and its corresponding sales amount, separated by a comma.
+## Technologies
 
-## Dependencies
+-   HTML
+-   CSS (Bootstrap)
+-   JavaScript
 
-*   Bootstrap 5 (via CDN)
+## Setup
 
-## Implementation Details
-
-The application uses JavaScript to:
-
-1.  Fetch the `data.csv` file.
-2.  Parse the CSV data.
-3.  Calculate the sum of the 'sales' column, skipping the header row and handling potential errors.
-4.  Update the content of the `div` element with the ID `total-sales` to display the total sales amount.
+1.  Download or clone this repository.
+2.  Create a `data.csv` file with your sales data.
+3.  Open `index.html` in your browser.
